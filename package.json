@@ -20,7 +20,8 @@
     "cron" : "1.0.1"
   },
   "devDependencies" : {
-    "mocha" : "1.8.1"
+    "mocha" : "x.x.x",
+    "sinon" : "x.x.x"
 	},
   "main": "./lib/cec2ation",
   "scripts": { "test": "mocha" },
