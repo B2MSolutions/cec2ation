@@ -24,5 +24,8 @@
 	},
   "main": "./lib/cec2ation",
   "scripts": { "test": "mocha" },
-  "engines": { "node": ">= 0.4.0" }
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
 }
