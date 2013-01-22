@@ -1,0 +1,27 @@
+{
+  "name": "cec2ation",
+	"description": "Stop and start EC2 instances like cron.",
+	"version": "0.0.1",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/B2MSolutions/cec2ation/raw/master/LICENSE"
+  }],
+  "author": { "name": "B2M Solutions", "url": "https://github.com/B2MSolutions" },
+  "contributors": [
+    { "name": "Roy Lines", "url":"https://github.com/roylines" },
+    { "name": "James Bloomer", "url":"https://github.com/jamesbloomer" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/B2MSolutions/cec2ation.git"
+  },
+  "keywords": ["cloud computing", "ec2", "aws", "amazon", "cron"],
+	"dependencies": {
+  },
+  "devDependencies" : {
+    "mocha" : "1.8.1"
+	},
+  "main": "./cec2ation",
+  "scripts": { "test": "mocha" },
+  "engines": { "node": ">= 0.8.0" }
+}
