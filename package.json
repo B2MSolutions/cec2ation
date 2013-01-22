@@ -17,7 +17,8 @@
   },
   "keywords": ["cloud computing", "ec2", "aws", "amazon", "cron"],
 	"dependencies": {
-    "cron" : "1.0.1"
+    "cron" : "1.0.1",
+    "aws-sdk" : "0.9.1-pre.2"
   },
   "devDependencies" : {
     "mocha" : "x.x.x",
