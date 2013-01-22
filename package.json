@@ -17,11 +17,12 @@
   },
   "keywords": ["cloud computing", "ec2", "aws", "amazon", "cron"],
 	"dependencies": {
+    "cron" : "1.0.1"
   },
   "devDependencies" : {
     "mocha" : "1.8.1"
 	},
-  "main": "./cec2ation",
+  "main": "./lib/cec2ation",
   "scripts": { "test": "mocha" },
   "engines": { "node": ">= 0.4.0" }
 }
