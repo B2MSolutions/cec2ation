@@ -23,5 +23,5 @@
 	},
   "main": "./cec2ation",
   "scripts": { "test": "mocha" },
-  "engines": { "node": ">= 0.8.0" }
+  "engines": { "node": ">= 0.4.0" }
 }
