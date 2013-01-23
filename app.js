@@ -4,7 +4,8 @@ var config = {
 	accessKeyId: process.env.AWS_ACCESS_KEY,
 	secretAccessKey: process.env.AWS_SECRET_KEY,
 	region: process.env.AWS_REGION,
-	instanceIds: []
+	stop: '00 00 00 * * 6',
+	instances: []
 };
 
-cec2ation.configure('0 0 * * * 1', '0 0 * * * 6', config);
+cec2ation.configure(config);
