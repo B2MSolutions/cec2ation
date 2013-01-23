@@ -48,7 +48,7 @@ describe('when calling startInstanceJob', function() {
 		config = {
 			start : '0 0 0 0 0 0'
 		}
-		
+
 		sinon.stub(cec2ation, 'startInstance');
 		job = cec2ation.startInstanceJob(config);
 	});
@@ -129,25 +129,62 @@ describe('when calling stopInstance', function() {
 	
 	var client;
 	var config;
+	var instances;
 	
+	beforeEach(function() {
+		client = sinon.stub();
+		client.stopInstances = sinon.stub();
+
+		sinon.stub(cec2ation, 'getEC2Client').returns(client);
+		sinon.stub(cec2ation, 'getInstances').yields(null, instances);
+		cec2ation.stopInstance(config);
+	});	
+
+	afterEach(function() {
+		cec2ation.getEC2Client.restore();
+		cec2ation.getInstances.restore();
+	});
+
+	it('should call getInstances', function() {
+		assert(cec2ation.getInstances.calledOnce);
+		assert(cec2ation.getInstances.calledWith(config));
+	});
+
+	it('should call stopInstances', function() {
+		assert(client.stopInstances.calledOnce);
+		assert(client.stopInstances.calledWith({InstanceIds : instances}));
+	});
+});
+
+describe('when calling getInstances', function() {
+	var client;
+	var config;
+
 	beforeEach(function() {
 		config = {
 			instances: "INSTANCES"
 		};
 
 		client = sinon.stub();
-		client.stopInstances = sinon.stub();
-		sinon.stub(cec2ation, 'getEC2Client').returns(client);
-		cec2ation.stopInstance(config);
-	});	
+		client.describeInstances = sinon.stub();
 
-	afterEach(function() {
-		cec2ation.getEC2Client.restore();
+		sinon.stub(cec2ation, 'getEC2Client').returns(client);
+		client.describeInstances.yields(null, {
+			Reservations : [ {
+				Instances : [ {
+					InstanceId: 'A'
+				},{
+					InstanceId: 'B'
+				}]
+			}]
+		});
 	});
 
-	it('should call stopInstances', function() {
-		assert(client.stopInstances.calledOnce);
-		assert(client.stopInstances.calledWith({InstanceIds : config.instances}));
+	it('should return expected', function(done) {
+		cec2ation.getInstances(config, function(e, instances) {			
+			assert.deepEqual(['A', 'B'], instances);
+			done(e, instances);
+		});
 	});
 });
 
